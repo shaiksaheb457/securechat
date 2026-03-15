@@ -3,11 +3,9 @@ const http = require('http');
 const { Server } = require('socket.io');
 const path = require('path');
 
-const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
 
-app.use(cors());
 const io = new Server(server, {
   maxHttpBufferSize: 50 * 1024 * 1024,
   cors: {
