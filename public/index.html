@@ -335,14 +335,14 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
+let currentRoom=null,myName='',peerName='',typingEl=null,myTypingTimer=null,lastSender=null,lastGroup=null,attachMenuOpen=false;
+const MAX_FILE_SIZE=20*1024*1024;
 const socket=io({
   transports: ['websocket', 'polling'],
   upgrade: true,
   reconnectionAttempts: 5,
   reconnectionDelay: 1000
 });
-let currentRoom=null,myName='',peerName='',typingEl=null,myTypingTimer=null,lastSender=null,lastGroup=null,attachMenuOpen=false;
-const MAX_FILE_SIZE=20*1024*1024;
 
 function confirmName(){
   const val=document.getElementById('popup-name-input').value.trim();
