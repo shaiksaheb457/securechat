@@ -19,8 +19,6 @@
   .corner-tr{top:0;right:0;border-top:2px solid var(--ink);border-right:2px solid var(--ink)}
   .corner-bl{bottom:0;left:0;border-bottom:2px solid var(--ink);border-left:2px solid var(--ink)}
   .corner-br{bottom:0;right:0;border-bottom:2px solid var(--ink);border-right:2px solid var(--ink)}
-
-  /* NAME POPUP */
   #name-overlay{position:fixed;inset:0;z-index:9998;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;padding:1.5rem;animation:overlayIn .3s ease}
   @keyframes overlayIn{from{opacity:0}to{opacity:1}}
   #name-overlay.hidden{animation:overlayOut .25s ease forwards;pointer-events:none}
@@ -49,8 +47,6 @@
   .popup-btn:hover::after{left:160%}
   .popup-btn:active{opacity:.8}
   .popup-hint{font-size:9px;letter-spacing:2px;color:var(--ink4);text-transform:uppercase;text-align:center}
-
-  /* LOBBY */
   #lobby{align-items:center;justify-content:flex-start;padding:clamp(1rem,4vw,2rem);background:var(--bg);overflow-y:auto;-webkit-overflow-scrolling:touch}
   .lobby-card{width:100%;max-width:440px;border:1px solid var(--ink);padding:clamp(1.5rem,5vw,3rem) clamp(1.2rem,4vw,2.5rem);display:flex;flex-direction:column;gap:clamp(1.2rem,3vw,1.8rem);position:relative;overflow:hidden;margin:auto}
   .lobby-card::before{content:'';position:absolute;bottom:0;right:0;width:100px;height:100px;background-image:linear-gradient(var(--border) 1px,transparent 1px),linear-gradient(90deg,var(--border) 1px,transparent 1px);background-size:12px 12px;pointer-events:none}
@@ -90,8 +86,6 @@
   .error-msg{font-size:9px;letter-spacing:2px;color:var(--ink2);border-left:2px solid var(--ink3);padding-left:10px;text-transform:uppercase;display:none}
   .error-msg::before{content:'! '}
   .error-msg.show{display:block}
-
-  /* CHAT */
   #chat{flex-direction:column;background:var(--bg);min-height:0}
   .chat-header{display:flex;align-items:center;justify-content:space-between;padding:clamp(10px,2vw,14px) clamp(12px,3vw,24px);border-bottom:1px solid var(--border);background:var(--bg);flex-shrink:0;position:relative;gap:8px}
   .chat-header::after{content:'';position:absolute;bottom:0;left:0;width:48px;height:2px;background:var(--ink)}
@@ -114,14 +108,10 @@
   .leave-btn:hover,.leave-btn:active{border-color:var(--ink);background:var(--ink);color:var(--bg)}
   .enc-bar{padding:5px clamp(12px,3vw,24px);background:var(--ink);color:var(--bg);font-size:clamp(8px,2vw,9px);letter-spacing:2px;text-transform:uppercase;text-align:center;flex-shrink:0;line-height:1.6}
   .enc-bar::before{content:'▸  '}
-
-  /* DRAG OVERLAY */
   .drag-overlay{position:absolute;inset:0;z-index:100;background:rgba(255,255,255,.95);display:none;align-items:center;justify-content:center;flex-direction:column;gap:16px;border:3px dashed var(--ink);pointer-events:none}
   .drag-overlay.active{display:flex}
   .drag-icon{font-size:36px;opacity:.6}
   .drag-text{font-size:11px;letter-spacing:4px;text-transform:uppercase;color:var(--ink2)}
-
-  /* MESSAGES */
   .messages-wrap{flex:1;overflow-y:auto;overflow-x:hidden;padding:clamp(12px,3vw,24px);display:flex;flex-direction:column;gap:4px;scroll-behavior:smooth;background:var(--bg2);position:relative;min-height:0;-webkit-overflow-scrolling:touch}
   .messages-wrap::-webkit-scrollbar{width:3px}
   .messages-wrap::-webkit-scrollbar-thumb{background:var(--border2)}
@@ -159,8 +149,6 @@
   @keyframes rotateDiamond{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
   .empty-text{font-size:9px;letter-spacing:4px;color:var(--ink4);text-transform:uppercase;text-align:center}
   .empty-text::before{content:'// '}
-
-  /* INPUT AREA */
   .input-area{display:flex;border-top:2px solid var(--ink);flex-shrink:0;background:var(--bg);position:relative;padding-bottom:env(safe-area-inset-bottom,0px)}
   .attach-menu{position:absolute;bottom:calc(100% + 2px);left:0;background:var(--bg);border:1px solid var(--ink);display:none;flex-direction:column;z-index:50;min-width:170px}
   .attach-menu.open{display:flex}
@@ -176,8 +164,6 @@
   .send-btn:hover:not(:disabled),.send-btn:active:not(:disabled){background:var(--ink);color:var(--bg)}
   .send-btn:disabled{color:var(--ink4);cursor:default}
   #file-input{display:none}
-
-  /* LIGHTBOX */
   #lightbox{position:fixed;inset:0;z-index:99997;background:rgba(0,0,0,.95);display:none;align-items:center;justify-content:center;padding:1.5rem;cursor:zoom-out;animation:lightboxIn .2s ease}
   @keyframes lightboxIn{from{opacity:0}to{opacity:1}}
   #lightbox.open{display:flex}
@@ -185,45 +171,14 @@
   .lightbox-close{position:absolute;top:16px;right:16px;background:none;border:1px solid rgba(255,255,255,.3);color:#fff;font-family:var(--font-mono);font-size:11px;letter-spacing:2px;padding:8px 14px;cursor:pointer;text-transform:uppercase;transition:all .15s;min-height:40px}
   .lightbox-close:hover{background:#fff;color:#000}
   .lightbox-name{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);color:rgba(255,255,255,.4);font-size:9px;letter-spacing:3px;text-transform:uppercase;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:80vw}
-
-  /* NOTIFICATIONS */
   .notif{position:fixed;top:16px;right:16px;z-index:9997;background:var(--ink);color:var(--bg);padding:10px 16px;font-size:9px;letter-spacing:3px;text-transform:uppercase;max-width:min(300px,calc(100vw - 32px));clip-path:polygon(0 0,calc(100% - 10px) 0,100% 10px,100% 100%,10px 100%,0 calc(100% - 10px));animation:notifIn .25s ease;word-break:break-word}
   .notif::before{content:'> '}
   @keyframes notifIn{from{opacity:0;transform:translateX(12px)}to{opacity:1;transform:translateX(0)}}
-
-  /* RESPONSIVE */
-  @media(max-width:768px){
-    .msg-bubble{max-width:min(78%,320px)}
-    .msg-media{max-width:min(240px,70vw)}
-  }
-  @media(max-width:480px){
-    .msg-bubble{max-width:85%}
-    .msg-media{max-width:min(220px,80vw)}
-    .enc-bar{font-size:8px;letter-spacing:1px;padding:5px 10px}
-    .peer-status{display:none}
-    .status-badges .badge:nth-child(n+3){display:none}
-  }
-  @media(max-width:360px){
-    .lobby-card{padding:1.2rem 1rem;gap:1.2rem}
-    .brand-name{font-size:28px}
-    .chat-header{padding:10px 12px}
-    .messages-wrap{padding:10px}
-    .msg-input{padding:14px 10px}
-    .enc-bar{display:none}
-  }
-  @media(max-height:500px) and (orientation:landscape){
-    .name-popup{gap:1rem;padding:1.2rem}
-    .popup-heading{font-size:24px}
-    .lobby-card{gap:1rem;padding:1.2rem}
-    .brand-name{font-size:28px}
-    .enc-bar{display:none}
-    .messages-wrap{padding:10px 14px}
-  }
-  @media(min-width:1200px){
-    .lobby-card{max-width:480px}
-    .msg-bubble{max-width:55%}
-    .msg-media{max-width:320px}
-  }
+  @media(max-width:768px){.msg-bubble{max-width:min(78%,320px)}.msg-media{max-width:min(240px,70vw)}}
+  @media(max-width:480px){.msg-bubble{max-width:85%}.msg-media{max-width:min(220px,80vw)}.enc-bar{font-size:8px;letter-spacing:1px;padding:5px 10px}.peer-status{display:none}.status-badges .badge:nth-child(n+3){display:none}}
+  @media(max-width:360px){.lobby-card{padding:1.2rem 1rem;gap:1.2rem}.brand-name{font-size:28px}.chat-header{padding:10px 12px}.messages-wrap{padding:10px}.msg-input{padding:14px 10px}.enc-bar{display:none}}
+  @media(max-height:500px) and (orientation:landscape){.name-popup{gap:1rem;padding:1.2rem}.popup-heading{font-size:24px}.lobby-card{gap:1rem;padding:1.2rem}.brand-name{font-size:28px}.enc-bar{display:none}.messages-wrap{padding:10px 14px}}
+  @media(min-width:1200px){.lobby-card{max-width:480px}.msg-bubble{max-width:55%}.msg-media{max-width:320px}}
 </style>
 </head>
 <body>
@@ -335,170 +290,413 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-// Globals declared first so inline onclick handlers never hit a dead zone
-var currentRoom=null,myName='',peerName='',typingEl=null,myTypingTimer=null,lastSender=null,lastGroup=null,attachMenuOpen=false;
-var MAX_FILE_SIZE=20*1024*1024;
-var socket;
+// ─── GLOBALS (var so they are hoisted — no temporal dead zone) ───────────────
+var currentRoom = null;
+var myName = '';
+var peerName = '';
+var typingEl = null;
+var myTypingTimer = null;
+var lastSender = null;
+var lastGroup = null;
+var attachMenuOpen = false;
+var MAX_FILE_SIZE = 20 * 1024 * 1024;
+var socket = null;
 
-window.addEventListener('DOMContentLoaded', function() {
-socket=io({
-  transports: ['websocket', 'polling'],
-  upgrade: true,
-  reconnectionAttempts: 5,
-  reconnectionDelay: 1000
-});
-
-function confirmName(){
-  const val=document.getElementById('popup-name-input').value.trim();
-  const err=document.getElementById('popup-error');
-  if(!val){err.classList.add('show');const p=document.querySelector('.name-popup');['translateX(-8px)','translateX(8px)','translateX(-5px)','translateX(0)'].forEach((t,i)=>setTimeout(()=>p.style.transform=t,i*80));return;}
-  err.classList.remove('show');myName=val;
-  document.getElementById('lobby-user-name').textContent=myName.toUpperCase();
-  const ov=document.getElementById('name-overlay');ov.classList.add('hidden');setTimeout(()=>ov.remove(),300);
+// ─── HELPERS (needed by inline onclicks before DOMContentLoaded) ─────────────
+function sanitize(str) {
+  var d = document.createElement('div');
+  d.textContent = str;
+  return d.innerHTML;
 }
 
-function changeName(){
-  const f=document.createElement('div');f.id='name-overlay';
-  f.style.cssText='position:fixed;inset:0;z-index:9998;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;padding:1.5rem;';
-  f.innerHTML=`<div class="name-popup"><div class="popup-corner-tl"></div><div class="popup-corner-br"></div><div class="popup-sys">identity.update</div><div><div class="popup-heading">CHANGE<br>NAME?</div><div class="popup-sub">enter a new identity</div></div><div><div class="popup-field-label">New Name</div><input class="popup-input" id="popup-name-input" value="${sanitize(myName)}" maxlength="20" autofocus onkeydown="if(event.key==='Enter')confirmName()"><div class="popup-error" id="popup-error">Name required.</div></div><button class="popup-btn" onclick="confirmName()">[ → ] Confirm</button><div class="popup-hint">Esc to cancel</div></div>`;
-  document.body.appendChild(f);setTimeout(()=>document.getElementById('popup-name-input').focus(),100);
-  const esc=(e)=>{if(e.key==='Escape'){f.classList.add('hidden');setTimeout(()=>f.remove(),300);document.removeEventListener('keydown',esc);}};document.addEventListener('keydown',esc);
+function showNotif(msg) {
+  var n = document.createElement('div');
+  n.className = 'notif';
+  n.textContent = msg;
+  document.body.appendChild(n);
+  setTimeout(function(){ n.remove(); }, 3000);
 }
 
-function toggleAttachMenu(){attachMenuOpen=!attachMenuOpen;document.getElementById('attach-menu').classList.toggle('open',attachMenuOpen);document.getElementById('attach-btn').style.background=attachMenuOpen?'var(--ink)':'';document.getElementById('attach-btn').style.color=attachMenuOpen?'var(--bg)':'';}
-function closeAttachMenu(){attachMenuOpen=false;document.getElementById('attach-menu').classList.remove('open');document.getElementById('attach-btn').style.background='';document.getElementById('attach-btn').style.color='';}
-function triggerFileInput(accept){closeAttachMenu();const i=document.getElementById('file-input');i.accept=accept;i.click();}
-document.addEventListener('click',(e)=>{if(attachMenuOpen&&!e.target.closest('#attach-btn')&&!e.target.closest('#attach-menu'))closeAttachMenu();});
+// ─── FUNCTIONS CALLED BY INLINE onclick ATTRIBUTES ───────────────────────────
+// These MUST be in global scope so the HTML onclick handlers can reach them.
 
-function handleFileSelect(e){const f=e.target.files[0];if(f)processFile(f);e.target.value='';}
-function handleDragOver(e){e.preventDefault();if(!currentRoom)return;document.getElementById('drag-overlay').classList.add('active');}
-function handleDragLeave(e){if(!e.relatedTarget||!e.currentTarget.contains(e.relatedTarget))document.getElementById('drag-overlay').classList.remove('active');}
-function handleDrop(e){e.preventDefault();document.getElementById('drag-overlay').classList.remove('active');if(!currentRoom){showNotif('Join a room first');return;}const f=e.dataTransfer.files[0];if(f)processFile(f);}
-
-function processFile(file){
-  if(!currentRoom){showNotif('Join a room first');return;}
-  if(file.size>MAX_FILE_SIZE){showNotif('File too large (max 20MB)');return;}
-  const isImg=file.type.startsWith('image/'),isVid=file.type.startsWith('video/');
-  if(!isImg&&!isVid){showNotif('Only images and videos allowed');return;}
-  readAndSendFile(file,isImg?'image':'video');
+function confirmName() {
+  var val = document.getElementById('popup-name-input').value.trim();
+  var err = document.getElementById('popup-error');
+  if (!val) {
+    err.classList.add('show');
+    var p = document.querySelector('.name-popup');
+    ['translateX(-8px)','translateX(8px)','translateX(-5px)','translateX(0)'].forEach(function(t,i){
+      setTimeout(function(){ p.style.transform = t; }, i * 80);
+    });
+    return;
+  }
+  err.classList.remove('show');
+  myName = val;
+  document.getElementById('lobby-user-name').textContent = myName.toUpperCase();
+  var ov = document.getElementById('name-overlay');
+  ov.classList.add('hidden');
+  setTimeout(function(){ ov.remove(); }, 300);
 }
 
-function readAndSendFile(file,mediaType){
-  const pid='prog_'+Date.now();appendProgress(pid,file.name,mediaType);
-  const reader=new FileReader();let progress=0;
-  const ticker=setInterval(()=>{progress=Math.min(progress+15,90);const b=document.getElementById('bar_'+pid);if(b)b.style.width=progress+'%';},100);
-  reader.onload=(e)=>{
-    clearInterval(ticker);const b=document.getElementById('bar_'+pid);if(b)b.style.width='100%';
-    const dataUrl=e.target.result;
-    setTimeout(()=>{removeProgress(pid);appendMedia(dataUrl,mediaType,'sent',myName,new Date(),file.name);socket.emit('send-media',{roomId:currentRoom,dataUrl,mediaType,fileName:file.name,senderName:myName,ts:Date.now()});},300);
-  };reader.readAsDataURL(file);
+function changeName() {
+  var f = document.createElement('div');
+  f.id = 'name-overlay';
+  f.style.cssText = 'position:fixed;inset:0;z-index:9998;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;padding:1.5rem;';
+  f.innerHTML = '<div class="name-popup"><div class="popup-corner-tl"></div><div class="popup-corner-br"></div><div class="popup-sys">identity.update</div><div><div class="popup-heading">CHANGE<br>NAME?</div><div class="popup-sub">enter a new identity</div></div><div><div class="popup-field-label">New Name</div><input class="popup-input" id="popup-name-input" value="' + sanitize(myName) + '" maxlength="20" autofocus onkeydown="if(event.key===\'Enter\')confirmName()"><div class="popup-error" id="popup-error">Name required.</div></div><button class="popup-btn" onclick="confirmName()">[ \u2192 ] Confirm</button><div class="popup-hint">Esc to cancel</div></div>';
+  document.body.appendChild(f);
+  setTimeout(function(){ document.getElementById('popup-name-input').focus(); }, 100);
+  var esc = function(e) {
+    if (e.key === 'Escape') {
+      f.classList.add('hidden');
+      setTimeout(function(){ f.remove(); }, 300);
+      document.removeEventListener('keydown', esc);
+    }
+  };
+  document.addEventListener('keydown', esc);
 }
 
-function appendProgress(id,fileName,mediaType){
-  removeEmpty();const wrap=document.getElementById('messages');lastSender=null;lastGroup=null;
-  const el=document.createElement('div');el.className='msg-group sent';el.id='progress_'+id;
-  el.innerHTML=`<div class="msg-sender-name">${sanitize(myName.toUpperCase())}</div><div class="upload-progress"><div class="progress-label">Sending ${sanitize(mediaType)}...</div><div class="progress-bar-wrap"><div class="progress-bar" id="bar_${id}"></div></div><div class="progress-label" style="color:var(--ink4)">${sanitize(fileName)}</div></div>`;
-  wrap.appendChild(el);wrap.scrollTop=wrap.scrollHeight;
-}
-function removeProgress(id){const el=document.getElementById('progress_'+id);if(el)el.remove();}
-
-function appendMedia(dataUrl,mediaType,type,senderName,date,fileName){
-  removeEmpty();const wrap=document.getElementById('messages');lastSender=null;lastGroup=null;
-  const group=document.createElement('div');group.className='msg-group '+type;
-  if(senderName){const n=document.createElement('div');n.className='msg-sender-name';n.textContent=senderName.toUpperCase();group.appendChild(n);}
-  const mw=document.createElement('div');mw.className='msg-media '+type;
-  if(mediaType==='image'){const img=document.createElement('img');img.className='media-img';img.src=dataUrl;img.alt=fileName||'image';img.onclick=()=>openLightbox(dataUrl,fileName);img.title='Tap to enlarge';mw.appendChild(img);}
-  else{const v=document.createElement('video');v.className='media-video';v.src=dataUrl;v.controls=true;v.preload='metadata';v.playsInline=true;mw.appendChild(v);}
-  const lbl=document.createElement('div');lbl.className='media-label';lbl.textContent=(mediaType==='image'?'📷 ':'🎬 ')+(fileName||mediaType)+' · '+date.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',hour12:false});
-  mw.appendChild(lbl);group.appendChild(mw);wrap.appendChild(group);wrap.scrollTop=wrap.scrollHeight;
+function createRoom() {
+  if (!socket) return;
+  socket.emit('create-room', { roomId: genRoomId(), userId: genUserId(), userName: myName });
 }
 
-function openLightbox(src,name){document.getElementById('lightbox-img').src=src;document.getElementById('lightbox-name').textContent=name||'image';document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden';}
-function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.getElementById('lightbox-img').src='';document.body.style.overflow='';}
-document.addEventListener('keydown',(e)=>{if(e.key==='Escape')closeLightbox();});
-
-function genRoomId(){const c='ABCDEFGHJKLMNPQRSTUVWXYZ23456789';let id='';const a=new Uint8Array(7);crypto.getRandomValues(a);a.forEach(b=>id+=c[b%c.length]);return id;}
-function genUserId(){const a=new Uint8Array(8);crypto.getRandomValues(a);return Array.from(a).map(b=>b.toString(16).padStart(2,'0')).join('');}
-function sanitize(str){const d=document.createElement('div');d.textContent=str;return d.innerHTML;}
-
-function createRoom(){socket.emit('create-room',{roomId:genRoomId(),userId:genUserId(),userName:myName});}
-function joinRoom(){const roomId=document.getElementById('join-input').value.trim().toUpperCase();const err=document.getElementById('join-error');if(!roomId){err.textContent='Please enter a room ID.';err.classList.add('show');return;}socket.emit('join-room',{roomId,userId:genUserId(),userName:myName});}
-
-socket.on('room-created',(roomId)=>{currentRoom=roomId;enterChat(roomId);showNotif('Room '+roomId+' initialized');});
-socket.on('join-success',({roomId,hostName})=>{currentRoom=roomId;document.getElementById('join-error').classList.remove('show');enterChat(roomId);showNotif('Channel established');setPeerOnline(true,hostName||'Host');});
-socket.on('join-error',(msg)=>{const err=document.getElementById('join-error');err.textContent=msg;err.classList.add('show');});
-socket.on('peer-joined',({userName})=>{peerName=userName||'Guest';setPeerOnline(true,peerName);addSystemMsg(peerName.toUpperCase()+' joined');showNotif(peerName+' connected');});
-socket.on('peer-left',()=>{setPeerOnline(false,peerName||'Peer');addSystemMsg((peerName||'Peer').toUpperCase()+' disconnected');});
-socket.on('receive-message',({text,ts,senderName})=>{appendBubble(text,'recv',new Date(ts),senderName);});
-socket.on('receive-media',({dataUrl,mediaType,fileName,senderName,ts})=>{appendMedia(dataUrl,mediaType,'recv',senderName,new Date(ts),fileName);});
-socket.on('peer-typing',({userName})=>showPeerTyping(true,userName));
-socket.on('peer-stop-typing',()=>showPeerTyping(false));
-
-function enterChat(roomId){
-  document.getElementById('lobby').classList.remove('active');
-  document.getElementById('chat').classList.add('active');
-  document.getElementById('header-room-id').textContent=roomId;
-  const wrap=document.getElementById('messages');
-  wrap.innerHTML=`<div class="drag-overlay" id="drag-overlay"><div class="drag-icon">⬆</div><div class="drag-text">Drop image or video to send</div></div><div class="empty-chat" id="empty-state"><div class="empty-diamond"></div><div class="empty-text">Share room ID to establish channel</div><div class="empty-diamond"></div></div>`;
-  lastSender=null;lastGroup=null;addSystemMsg('You joined as '+myName.toUpperCase());
-  setTimeout(()=>document.getElementById('msg-input').focus(),300);
+function joinRoom() {
+  var roomId = document.getElementById('join-input').value.trim().toUpperCase();
+  var err = document.getElementById('join-error');
+  if (!roomId) { err.textContent = 'Please enter a room ID.'; err.classList.add('show'); return; }
+  if (!socket) return;
+  socket.emit('join-room', { roomId: roomId, userId: genUserId(), userName: myName });
 }
 
-function setPeerOnline(online,name){
-  peerName=name;document.getElementById('peer-name').textContent=name.toUpperCase();document.getElementById('peer-initials').textContent=name[0].toUpperCase();
-  document.getElementById('status-dot').className='status-diamond'+(online?'':' offline');
-  const s=document.getElementById('peer-status-text');s.textContent=online?'online · encrypted':'offline';s.className='peer-status'+(online?' online':'');
+function leaveRoom() {
+  if (!currentRoom || !socket) return;
+  socket.emit('leave-room', currentRoom);
+  currentRoom = null; peerName = '';
+  document.getElementById('chat').classList.remove('active');
+  document.getElementById('lobby').classList.add('active');
+  document.getElementById('join-input').value = '';
+  document.getElementById('join-error').classList.remove('show');
 }
 
-function leaveRoom(){if(!currentRoom)return;socket.emit('leave-room',currentRoom);currentRoom=null;peerName='';document.getElementById('chat').classList.remove('active');document.getElementById('lobby').classList.add('active');document.getElementById('join-input').value='';document.getElementById('join-error').classList.remove('show');}
-
-function handleKey(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage();}adjustTextarea();}
-function adjustTextarea(){const ta=document.getElementById('msg-input');ta.style.height='auto';ta.style.height=Math.min(ta.scrollHeight,120)+'px';document.getElementById('send-btn').disabled=!ta.value.trim();}
-function handleTyping(){adjustTextarea();if(!currentRoom)return;socket.emit('typing',{roomId:currentRoom,userName:myName});clearTimeout(myTypingTimer);myTypingTimer=setTimeout(()=>socket.emit('stop-typing',currentRoom),1500);}
-
-function sendMessage(){
-  const input=document.getElementById('msg-input');const text=input.value.trim();
-  if(!text||!currentRoom)return;const ts=Date.now();
-  socket.emit('send-message',{roomId:currentRoom,text:sanitize(text),ts,senderName:myName});
-  appendBubble(text,'sent',new Date(ts),myName);
-  input.value='';input.style.height='auto';document.getElementById('send-btn').disabled=true;
-  socket.emit('stop-typing',currentRoom);
+function copyRoomId() {
+  if (!currentRoom) return;
+  navigator.clipboard.writeText(currentRoom).catch(function(){});
+  var tip = document.getElementById('copied-tip');
+  tip.classList.add('show');
+  setTimeout(function(){ tip.classList.remove('show'); }, 2000);
 }
 
-function showPeerTyping(show,name){
-  const wrap=document.getElementById('messages');if(!wrap)return;
-  if(show&&!typingEl){removeEmpty();typingEl=document.createElement('div');typingEl.className='msg-group recv';typingEl.innerHTML=`<div class="typing-indicator"><span class="typing-label">${sanitize((name||'peer').toUpperCase())} is typing</span><div class="typing-dots"><span></span><span></span><span></span></div></div>`;wrap.appendChild(typingEl);wrap.scrollTop=wrap.scrollHeight;}
-  else if(!show&&typingEl){typingEl.remove();typingEl=null;}
+function closeLightbox() {
+  document.getElementById('lightbox').classList.remove('open');
+  document.getElementById('lightbox-img').src = '';
+  document.body.style.overflow = '';
 }
 
-function removeEmpty(){const e=document.getElementById('empty-state');if(e)e.remove();}
+function openLightbox(src, name) {
+  document.getElementById('lightbox-img').src = src;
+  document.getElementById('lightbox-name').textContent = name || 'image';
+  document.getElementById('lightbox').classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
 
-function appendBubble(text,type,date,senderName){
-  removeEmpty();const wrap=document.getElementById('messages');const key=type+'_'+(senderName||'');
-  if(key!==lastSender||!lastGroup){
-    lastSender=key;lastGroup=document.createElement('div');lastGroup.className='msg-group '+type;
-    if(senderName){const n=document.createElement('div');n.className='msg-sender-name';n.textContent=senderName.toUpperCase();lastGroup.appendChild(n);}
-    const b=document.createElement('div');b.className='msg-bubble '+type;b.innerHTML=sanitize(text).replace(/\n/g,'<br>');lastGroup.appendChild(b);
-    const t=document.createElement('div');t.className='msg-time';t.textContent=date.toLocaleTimeString([],{hour:'2-digit',minute:'2-digit',hour12:false});lastGroup.appendChild(t);
+function toggleAttachMenu() {
+  attachMenuOpen = !attachMenuOpen;
+  document.getElementById('attach-menu').classList.toggle('open', attachMenuOpen);
+  document.getElementById('attach-btn').style.background = attachMenuOpen ? 'var(--ink)' : '';
+  document.getElementById('attach-btn').style.color = attachMenuOpen ? 'var(--bg)' : '';
+}
+
+function closeAttachMenu() {
+  attachMenuOpen = false;
+  document.getElementById('attach-menu').classList.remove('open');
+  document.getElementById('attach-btn').style.background = '';
+  document.getElementById('attach-btn').style.color = '';
+}
+
+function triggerFileInput(accept) {
+  closeAttachMenu();
+  var i = document.getElementById('file-input');
+  i.accept = accept;
+  i.click();
+}
+
+function handleFileSelect(e) {
+  var f = e.target.files[0];
+  if (f) processFile(f);
+  e.target.value = '';
+}
+
+function handleDragOver(e) {
+  e.preventDefault();
+  if (!currentRoom) return;
+  document.getElementById('drag-overlay').classList.add('active');
+}
+
+function handleDragLeave(e) {
+  if (!e.relatedTarget || !e.currentTarget.contains(e.relatedTarget))
+    document.getElementById('drag-overlay').classList.remove('active');
+}
+
+function handleDrop(e) {
+  e.preventDefault();
+  document.getElementById('drag-overlay').classList.remove('active');
+  if (!currentRoom) { showNotif('Join a room first'); return; }
+  var f = e.dataTransfer.files[0];
+  if (f) processFile(f);
+}
+
+function handleKey(e) {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendMessage(); }
+  adjustTextarea();
+}
+
+function handleTyping() {
+  adjustTextarea();
+  if (!currentRoom || !socket) return;
+  socket.emit('typing', { roomId: currentRoom, userName: myName });
+  clearTimeout(myTypingTimer);
+  myTypingTimer = setTimeout(function(){ socket.emit('stop-typing', currentRoom); }, 1500);
+}
+
+function sendMessage() {
+  var input = document.getElementById('msg-input');
+  var text = input.value.trim();
+  if (!text || !currentRoom || !socket) return;
+  var ts = Date.now();
+  socket.emit('send-message', { roomId: currentRoom, text: sanitize(text), ts: ts, senderName: myName });
+  appendBubble(text, 'sent', new Date(ts), myName);
+  input.value = ''; input.style.height = 'auto';
+  document.getElementById('send-btn').disabled = true;
+  socket.emit('stop-typing', currentRoom);
+}
+
+// ─── OTHER FUNCTIONS ──────────────────────────────────────────────────────────
+
+function genRoomId() {
+  var c = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'; var id = '';
+  var a = new Uint8Array(7); crypto.getRandomValues(a);
+  a.forEach(function(b){ id += c[b % c.length]; });
+  return id;
+}
+
+function genUserId() {
+  var a = new Uint8Array(8); crypto.getRandomValues(a);
+  return Array.from(a).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+}
+
+function adjustTextarea() {
+  var ta = document.getElementById('msg-input');
+  ta.style.height = 'auto';
+  ta.style.height = Math.min(ta.scrollHeight, 120) + 'px';
+  document.getElementById('send-btn').disabled = !ta.value.trim();
+}
+
+function removeEmpty() {
+  var e = document.getElementById('empty-state');
+  if (e) e.remove();
+}
+
+function appendBubble(text, type, date, senderName) {
+  removeEmpty();
+  var wrap = document.getElementById('messages');
+  var key = type + '_' + (senderName || '');
+  if (key !== lastSender || !lastGroup) {
+    lastSender = key;
+    lastGroup = document.createElement('div');
+    lastGroup.className = 'msg-group ' + type;
+    if (senderName) {
+      var n = document.createElement('div');
+      n.className = 'msg-sender-name';
+      n.textContent = senderName.toUpperCase();
+      lastGroup.appendChild(n);
+    }
+    var b = document.createElement('div');
+    b.className = 'msg-bubble ' + type;
+    b.innerHTML = sanitize(text).replace(/\n/g, '<br>');
+    lastGroup.appendChild(b);
+    var t = document.createElement('div');
+    t.className = 'msg-time';
+    t.textContent = date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+    lastGroup.appendChild(t);
     wrap.appendChild(lastGroup);
   } else {
-    const b=document.createElement('div');b.className='msg-bubble '+type;b.innerHTML=sanitize(text).replace(/\n/g,'<br>');lastGroup.insertBefore(b,lastGroup.lastChild);
+    var b2 = document.createElement('div');
+    b2.className = 'msg-bubble ' + type;
+    b2.innerHTML = sanitize(text).replace(/\n/g, '<br>');
+    lastGroup.insertBefore(b2, lastGroup.lastChild);
   }
-  wrap.scrollTop=wrap.scrollHeight;
+  wrap.scrollTop = wrap.scrollHeight;
 }
 
-function addSystemMsg(text){const wrap=document.getElementById('messages');const el=document.createElement('div');el.className='system-msg';el.textContent=text;wrap.appendChild(el);lastSender=null;lastGroup=null;wrap.scrollTop=wrap.scrollHeight;}
-function copyRoomId(){if(!currentRoom)return;navigator.clipboard.writeText(currentRoom).catch(()=>{});const tip=document.getElementById('copied-tip');tip.classList.add('show');setTimeout(()=>tip.classList.remove('show'),2000);}
-function showNotif(msg){const n=document.createElement('div');n.className='notif';n.textContent=msg;document.body.appendChild(n);setTimeout(()=>n.remove(),3000);}
+function addSystemMsg(text) {
+  var wrap = document.getElementById('messages');
+  var el = document.createElement('div');
+  el.className = 'system-msg';
+  el.textContent = text;
+  wrap.appendChild(el);
+  lastSender = null; lastGroup = null;
+  wrap.scrollTop = wrap.scrollHeight;
+}
 
-document.getElementById('msg-input').addEventListener('input',adjustTextarea);
+function appendProgress(id, fileName, mediaType) {
+  removeEmpty();
+  var wrap = document.getElementById('messages');
+  lastSender = null; lastGroup = null;
+  var el = document.createElement('div');
+  el.className = 'msg-group sent';
+  el.id = 'progress_' + id;
+  el.innerHTML = '<div class="msg-sender-name">' + sanitize(myName.toUpperCase()) + '</div><div class="upload-progress"><div class="progress-label">Sending ' + sanitize(mediaType) + '...</div><div class="progress-bar-wrap"><div class="progress-bar" id="bar_' + id + '"></div></div><div class="progress-label" style="color:var(--ink4)">' + sanitize(fileName) + '</div></div>';
+  wrap.appendChild(el);
+  wrap.scrollTop = wrap.scrollHeight;
+}
 
-// iOS viewport fix
-function fixViewport(){document.documentElement.style.setProperty('--vh',window.innerHeight*.01+'px');}
-window.addEventListener('resize',fixViewport);
-window.addEventListener('orientationchange',()=>setTimeout(fixViewport,200));
-fixViewport();
-}); // end DOMContentLoaded
+function removeProgress(id) {
+  var el = document.getElementById('progress_' + id);
+  if (el) el.remove();
+}
+
+function appendMedia(dataUrl, mediaType, type, senderName, date, fileName) {
+  removeEmpty();
+  var wrap = document.getElementById('messages');
+  lastSender = null; lastGroup = null;
+  var group = document.createElement('div');
+  group.className = 'msg-group ' + type;
+  if (senderName) {
+    var n = document.createElement('div');
+    n.className = 'msg-sender-name';
+    n.textContent = senderName.toUpperCase();
+    group.appendChild(n);
+  }
+  var mw = document.createElement('div');
+  mw.className = 'msg-media ' + type;
+  if (mediaType === 'image') {
+    var img = document.createElement('img');
+    img.className = 'media-img';
+    img.src = dataUrl;
+    img.alt = fileName || 'image';
+    img.onclick = function(){ openLightbox(dataUrl, fileName); };
+    img.title = 'Tap to enlarge';
+    mw.appendChild(img);
+  } else {
+    var v = document.createElement('video');
+    v.className = 'media-video';
+    v.src = dataUrl;
+    v.controls = true;
+    v.preload = 'metadata';
+    v.playsInline = true;
+    mw.appendChild(v);
+  }
+  var lbl = document.createElement('div');
+  lbl.className = 'media-label';
+  lbl.textContent = (mediaType === 'image' ? '📷 ' : '🎬 ') + (fileName || mediaType) + ' · ' + date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit', hour12: false });
+  mw.appendChild(lbl);
+  group.appendChild(mw);
+  wrap.appendChild(group);
+  wrap.scrollTop = wrap.scrollHeight;
+}
+
+function processFile(file) {
+  if (!currentRoom) { showNotif('Join a room first'); return; }
+  if (file.size > MAX_FILE_SIZE) { showNotif('File too large (max 20MB)'); return; }
+  var isImg = file.type.startsWith('image/'), isVid = file.type.startsWith('video/');
+  if (!isImg && !isVid) { showNotif('Only images and videos allowed'); return; }
+  readAndSendFile(file, isImg ? 'image' : 'video');
+}
+
+function readAndSendFile(file, mediaType) {
+  var pid = 'prog_' + Date.now();
+  appendProgress(pid, file.name, mediaType);
+  var reader = new FileReader();
+  var progress = 0;
+  var ticker = setInterval(function(){
+    progress = Math.min(progress + 15, 90);
+    var b = document.getElementById('bar_' + pid);
+    if (b) b.style.width = progress + '%';
+  }, 100);
+  reader.onload = function(e) {
+    clearInterval(ticker);
+    var b = document.getElementById('bar_' + pid);
+    if (b) b.style.width = '100%';
+    var dataUrl = e.target.result;
+    setTimeout(function(){
+      removeProgress(pid);
+      appendMedia(dataUrl, mediaType, 'sent', myName, new Date(), file.name);
+      socket.emit('send-media', { roomId: currentRoom, dataUrl: dataUrl, mediaType: mediaType, fileName: file.name, senderName: myName, ts: Date.now() });
+    }, 300);
+  };
+  reader.readAsDataURL(file);
+}
+
+function enterChat(roomId) {
+  document.getElementById('lobby').classList.remove('active');
+  document.getElementById('chat').classList.add('active');
+  document.getElementById('header-room-id').textContent = roomId;
+  var wrap = document.getElementById('messages');
+  wrap.innerHTML = '<div class="drag-overlay" id="drag-overlay"><div class="drag-icon">⬆</div><div class="drag-text">Drop image or video to send</div></div><div class="empty-chat" id="empty-state"><div class="empty-diamond"></div><div class="empty-text">Share room ID to establish channel</div><div class="empty-diamond"></div></div>';
+  lastSender = null; lastGroup = null;
+  addSystemMsg('You joined as ' + myName.toUpperCase());
+  setTimeout(function(){ document.getElementById('msg-input').focus(); }, 300);
+}
+
+function setPeerOnline(online, name) {
+  peerName = name;
+  document.getElementById('peer-name').textContent = name.toUpperCase();
+  document.getElementById('peer-initials').textContent = name[0].toUpperCase();
+  document.getElementById('status-dot').className = 'status-diamond' + (online ? '' : ' offline');
+  var s = document.getElementById('peer-status-text');
+  s.textContent = online ? 'online · encrypted' : 'offline';
+  s.className = 'peer-status' + (online ? ' online' : '');
+}
+
+function showPeerTyping(show, name) {
+  var wrap = document.getElementById('messages');
+  if (!wrap) return;
+  if (show && !typingEl) {
+    removeEmpty();
+    typingEl = document.createElement('div');
+    typingEl.className = 'msg-group recv';
+    typingEl.innerHTML = '<div class="typing-indicator"><span class="typing-label">' + sanitize((name || 'peer').toUpperCase()) + ' is typing</span><div class="typing-dots"><span></span><span></span><span></span></div></div>';
+    wrap.appendChild(typingEl);
+    wrap.scrollTop = wrap.scrollHeight;
+  } else if (!show && typingEl) {
+    typingEl.remove();
+    typingEl = null;
+  }
+}
+
+function fixViewport() {
+  document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
+}
+
+// ─── INIT (runs after DOM is ready) ──────────────────────────────────────────
+window.addEventListener('DOMContentLoaded', function() {
+
+  socket = io({
+    transports: ['websocket', 'polling'],
+    upgrade: true,
+    reconnectionAttempts: 5,
+    reconnectionDelay: 1000
+  });
+
+  socket.on('room-created', function(roomId){ currentRoom = roomId; enterChat(roomId); showNotif('Room ' + roomId + ' initialized'); });
+  socket.on('join-success', function(d){ currentRoom = d.roomId; document.getElementById('join-error').classList.remove('show'); enterChat(d.roomId); showNotif('Channel established'); setPeerOnline(true, d.hostName || 'Host'); });
+  socket.on('join-error', function(msg){ var err = document.getElementById('join-error'); err.textContent = msg; err.classList.add('show'); });
+  socket.on('peer-joined', function(d){ peerName = d.userName || 'Guest'; setPeerOnline(true, peerName); addSystemMsg(peerName.toUpperCase() + ' joined'); showNotif(peerName + ' connected'); });
+  socket.on('peer-left', function(){ setPeerOnline(false, peerName || 'Peer'); addSystemMsg((peerName || 'Peer').toUpperCase() + ' disconnected'); });
+  socket.on('receive-message', function(d){ appendBubble(d.text, 'recv', new Date(d.ts), d.senderName); });
+  socket.on('receive-media', function(d){ appendMedia(d.dataUrl, d.mediaType, 'recv', d.senderName, new Date(d.ts), d.fileName); });
+  socket.on('peer-typing', function(d){ showPeerTyping(true, d.userName); });
+  socket.on('peer-stop-typing', function(){ showPeerTyping(false); });
+
+  document.getElementById('msg-input').addEventListener('input', adjustTextarea);
+  document.addEventListener('click', function(e){ if (attachMenuOpen && !e.target.closest('#attach-btn') && !e.target.closest('#attach-menu')) closeAttachMenu(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeLightbox(); });
+
+  window.addEventListener('resize', fixViewport);
+  window.addEventListener('orientationchange', function(){ setTimeout(fixViewport, 200); });
+  fixViewport();
+});
 </script>
 </body>
 </html>
