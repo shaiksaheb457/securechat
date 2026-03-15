@@ -288,7 +288,6 @@
   </div>
 </div>
 
-<script src="/socket.io/socket.io.js"></script>
 <script>
 // ─── GLOBALS (var so they are hoisted — no temporal dead zone) ───────────────
 var currentRoom = null;
@@ -358,6 +357,7 @@ function changeName() {
 
 function createRoom() {
   if (!myName) { showNotif('Enter your name first'); return; }
+  if (!socket) { showNotif('Still connecting... please wait'); return; }
   socket.emit('create-room', { roomId: genRoomId(), userId: genUserId(), userName: myName });
 }
 
@@ -365,6 +365,7 @@ function joinRoom() {
   var roomId = document.getElementById('join-input').value.trim().toUpperCase();
   var err = document.getElementById('join-error');
   if (!roomId) { err.textContent = 'Please enter a room ID.'; err.classList.add('show'); return; }
+  if (!socket) { showNotif('Still connecting... please wait'); return; }
   socket.emit('join-room', { roomId: roomId, userId: genUserId(), userName: myName });
 }
 
@@ -669,20 +670,18 @@ function fixViewport() {
 }
 
 // ─── INIT ────────────────────────────────────────────────────────────────────
-// Socket is initialized immediately (not inside DOMContentLoaded) so it is
-// always ready by the time the user can click anything.
-socket = io({
-  transports: ['websocket', 'polling'],
-  upgrade: true,
-  reconnectionAttempts: 5,
-  reconnectionDelay: 1000
-});
+// Called once socket.io script has loaded (from server or CDN fallback)
+function initSocket() {
+  socket = io({
+    transports: ['websocket', 'polling'],
+    upgrade: true,
+    reconnectionAttempts: 5,
+    reconnectionDelay: 1000
+  });
 
-socket.on('connect', function(){ console.log('Socket connected:', socket.id); });
-socket.on('connect_error', function(err){ console.error('Socket connect error:', err); showNotif('Connection error — check console'); });
-socket.on('disconnect', function(reason){ console.warn('Socket disconnected:', reason); });
-
-window.addEventListener('DOMContentLoaded', function() {
+  socket.on('connect', function(){ console.log('Socket connected:', socket.id); });
+  socket.on('connect_error', function(err){ console.error('Socket connect error:', err); showNotif('Connection error: ' + err.message); });
+  socket.on('disconnect', function(reason){ console.warn('Socket disconnected:', reason); });
 
   socket.on('room-created', function(roomId){ currentRoom = roomId; enterChat(roomId); showNotif('Room ' + roomId + ' initialized'); });
   socket.on('join-success', function(d){ currentRoom = d.roomId; document.getElementById('join-error').classList.remove('show'); enterChat(d.roomId); showNotif('Channel established'); setPeerOnline(true, d.hostName || 'Host'); });
@@ -693,15 +692,33 @@ window.addEventListener('DOMContentLoaded', function() {
   socket.on('receive-media', function(d){ appendMedia(d.dataUrl, d.mediaType, 'recv', d.senderName, new Date(d.ts), d.fileName); });
   socket.on('peer-typing', function(d){ showPeerTyping(true, d.userName); });
   socket.on('peer-stop-typing', function(){ showPeerTyping(false); });
+}
 
+window.addEventListener('DOMContentLoaded', function() {
   document.getElementById('msg-input').addEventListener('input', adjustTextarea);
   document.addEventListener('click', function(e){ if (attachMenuOpen && !e.target.closest('#attach-btn') && !e.target.closest('#attach-menu')) closeAttachMenu(); });
   document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeLightbox(); });
-
   window.addEventListener('resize', fixViewport);
   window.addEventListener('orientationchange', function(){ setTimeout(fixViewport, 200); });
   fixViewport();
 });
+</script>
+<script>
+// Load socket.io from the server, fall back to CDN if it fails
+(function(){
+  var s = document.createElement('script');
+  s.src = '/socket.io/socket.io.js';
+  s.onerror = function(){
+    console.warn('Local socket.io failed, loading from CDN...');
+    var fallback = document.createElement('script');
+    fallback.src = 'https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.5/socket.io.min.js';
+    fallback.onload = function(){ window.__socketIOReady = true; initSocket(); };
+    fallback.onerror = function(){ console.error('socket.io CDN also failed'); };
+    document.head.appendChild(fallback);
+  };
+  s.onload = function(){ window.__socketIOReady = true; initSocket(); };
+  document.head.appendChild(s);
+})();
 </script>
 </body>
 </html>
