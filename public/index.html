@@ -335,9 +335,13 @@
 
 <script src="/socket.io/socket.io.js"></script>
 <script>
-let currentRoom=null,myName='',peerName='',typingEl=null,myTypingTimer=null,lastSender=null,lastGroup=null,attachMenuOpen=false;
-const MAX_FILE_SIZE=20*1024*1024;
-const socket=io({
+// Globals declared first so inline onclick handlers never hit a dead zone
+var currentRoom=null,myName='',peerName='',typingEl=null,myTypingTimer=null,lastSender=null,lastGroup=null,attachMenuOpen=false;
+var MAX_FILE_SIZE=20*1024*1024;
+var socket;
+
+window.addEventListener('DOMContentLoaded', function() {
+socket=io({
   transports: ['websocket', 'polling'],
   upgrade: true,
   reconnectionAttempts: 5,
@@ -494,6 +498,7 @@ function fixViewport(){document.documentElement.style.setProperty('--vh',window.
 window.addEventListener('resize',fixViewport);
 window.addEventListener('orientationchange',()=>setTimeout(fixViewport,200));
 fixViewport();
+}); // end DOMContentLoaded
 </script>
 </body>
 </html>
