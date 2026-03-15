@@ -357,7 +357,7 @@ function changeName() {
 }
 
 function createRoom() {
-  if (!socket) return;
+  if (!myName) { showNotif('Enter your name first'); return; }
   socket.emit('create-room', { roomId: genRoomId(), userId: genUserId(), userName: myName });
 }
 
@@ -365,12 +365,11 @@ function joinRoom() {
   var roomId = document.getElementById('join-input').value.trim().toUpperCase();
   var err = document.getElementById('join-error');
   if (!roomId) { err.textContent = 'Please enter a room ID.'; err.classList.add('show'); return; }
-  if (!socket) return;
   socket.emit('join-room', { roomId: roomId, userId: genUserId(), userName: myName });
 }
 
 function leaveRoom() {
-  if (!currentRoom || !socket) return;
+  if (!currentRoom) return;
   socket.emit('leave-room', currentRoom);
   currentRoom = null; peerName = '';
   document.getElementById('chat').classList.remove('active');
@@ -453,7 +452,7 @@ function handleKey(e) {
 
 function handleTyping() {
   adjustTextarea();
-  if (!currentRoom || !socket) return;
+  if (!currentRoom) return;
   socket.emit('typing', { roomId: currentRoom, userName: myName });
   clearTimeout(myTypingTimer);
   myTypingTimer = setTimeout(function(){ socket.emit('stop-typing', currentRoom); }, 1500);
@@ -462,7 +461,7 @@ function handleTyping() {
 function sendMessage() {
   var input = document.getElementById('msg-input');
   var text = input.value.trim();
-  if (!text || !currentRoom || !socket) return;
+  if (!text || !currentRoom) return;
   var ts = Date.now();
   socket.emit('send-message', { roomId: currentRoom, text: sanitize(text), ts: ts, senderName: myName });
   appendBubble(text, 'sent', new Date(ts), myName);
@@ -669,15 +668,21 @@ function fixViewport() {
   document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
 }
 
-// ─── INIT (runs after DOM is ready) ──────────────────────────────────────────
-window.addEventListener('DOMContentLoaded', function() {
+// ─── INIT ────────────────────────────────────────────────────────────────────
+// Socket is initialized immediately (not inside DOMContentLoaded) so it is
+// always ready by the time the user can click anything.
+socket = io({
+  transports: ['websocket', 'polling'],
+  upgrade: true,
+  reconnectionAttempts: 5,
+  reconnectionDelay: 1000
+});
 
-  socket = io({
-    transports: ['websocket', 'polling'],
-    upgrade: true,
-    reconnectionAttempts: 5,
-    reconnectionDelay: 1000
-  });
+socket.on('connect', function(){ console.log('Socket connected:', socket.id); });
+socket.on('connect_error', function(err){ console.error('Socket connect error:', err); showNotif('Connection error — check console'); });
+socket.on('disconnect', function(reason){ console.warn('Socket disconnected:', reason); });
+
+window.addEventListener('DOMContentLoaded', function() {
 
   socket.on('room-created', function(roomId){ currentRoom = roomId; enterChat(roomId); showNotif('Room ' + roomId + ' initialized'); });
   socket.on('join-success', function(d){ currentRoom = d.roomId; document.getElementById('join-error').classList.remove('show'); enterChat(d.roomId); showNotif('Channel established'); setPeerOnline(true, d.hostName || 'Host'); });
