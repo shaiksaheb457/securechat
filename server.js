@@ -3,12 +3,18 @@ const http = require('http');
 const { Server } = require('socket.io');
 const path = require('path');
 
+const cors = require('cors');
 const app = express();
 const server = http.createServer(app);
 
-// Increase limit for image/video base64 transfers (50MB)
+app.use(cors());
 const io = new Server(server, {
-  maxHttpBufferSize: 50 * 1024 * 1024
+  maxHttpBufferSize: 50 * 1024 * 1024,
+  cors: {
+    origin: "*",
+    methods: ["GET", "POST"]
+  },
+  transports: ['websocket', 'polling']
 });
 
 app.use(express.static(path.join(__dirname, 'public')));
@@ -75,7 +81,7 @@ io.on('connection', (socket) => {
 });
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => {
+server.listen(PORT, '0.0.0.0', () => {
   console.log('SecureChat running on port ' + PORT);
 });
 
